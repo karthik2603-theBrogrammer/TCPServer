@@ -35,7 +35,7 @@ void handle_client(int client_socket)
 
       if (line == "READ")
       {
-        std::cout << "READ GOT" << std::endl;
+        // std::cout << "READ GOT" << std::endl;
         // Extract the key
         pos = received_data.find(delimiter);
         if (pos != std::string::npos)
@@ -60,12 +60,12 @@ void handle_client(int client_socket)
         else
         {
           // in case the key is not found.
-          std::cout << "Key Not Found !" << std::endl;
+          // std::cout << "Key Not Found !" << std::endl;
         }
       }
       else if (line == "WRITE")
       {
-        std::cout << "WRITE GOT" << std::endl;
+        // std::cout << "WRITE GOT" << std::endl;
 
         // Extract the key
         pos = received_data.find(delimiter);
@@ -97,24 +97,24 @@ void handle_client(int client_socket)
             else
             {
               // Handle incomplete command
-              std::cout << "Incomplete WRITE command: " << line << std::endl;
+              // std::cout << "Incomplete WRITE command: " << line << std::endl;
             }
           }
           else
           {
             // Handle incomplete command
-            std::cout << "Incomplete WRITE command: " << line << std::endl;
+            // std::cout << "Incomplete WRITE command: " << line << std::endl;
           }
         }
         else
         {
           // Handle incomplete command
-          std::cout << "Incomplete WRITE command: " << line << std::endl;
+          // std::cout << "Incomplete WRITE command: " << line << std::endl;
         }
       }
       else if (line == "COUNT")
       {
-        std::cout << "COUNT GOT" << std::endl;
+        // std::cout << "COUNT GOT" << std::endl;
         // Count the number of key-value pairs in the database
         int count = KV_DATASTORE.size();
         std::string response = std::to_string(count) + "\n";
@@ -122,7 +122,7 @@ void handle_client(int client_socket)
       }
       else if (line == "DELETE")
 {
-    std::cout << "DELETE GOT" << std::endl;
+    // std::cout << "DELETE GOT" << std::endl;
 
     // Extract the key from received_data
     pos = received_data.find(delimiter);
@@ -149,7 +149,7 @@ void handle_client(int client_socket)
     else
     {
         // Handle incomplete command
-        std::cout << "Incomplete DELETE command: " << line << std::endl;
+        // std::cout << "Incomplete DELETE command: " << line << std::endl;
     }
 }
       else if (line == "END")
@@ -207,7 +207,7 @@ int main(int argc, char **argv)
   listen(server_socket, 5);
   clilen = sizeof(cli_addr);
 
-  std::cout << "Server listening on port " << portno << "...\n";
+  // std::cout << "Server listening on port " << portno << "...\n";
 
   // Accept incoming connections and handle them sequentially
   while (1)
