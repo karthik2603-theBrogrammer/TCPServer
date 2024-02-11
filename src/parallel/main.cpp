@@ -13,7 +13,7 @@
 #define NUM_THREADS 4 
 
 
-void handle_inputs(std::queue<Request> bufferForRequests, int CLIENT_SOCKET)
+void parse_buffer(std::queue<Request> bufferForRequests, int CLIENT_SOCKET)
 {
     while (!bufferForRequests.empty())
     {
@@ -77,7 +77,7 @@ void handle_inputs(std::queue<Request> bufferForRequests, int CLIENT_SOCKET)
     }
 }
 
-std::queue<Request> parseInput(std::istream &inputStream)
+std::queue<Request> stream_input(std::istream &inputStream)
 {
     std::queue<Request> reqs;
     std::string line;
@@ -147,9 +147,9 @@ void worker_thread(void *arg)
         }
 
         std::istringstream inputBuffer(buffer);
-        std::queue<Request> bufferForRequests = parseInput(inputBuffer);
+        std::queue<Request> bufferForRequests = stream_input(inputBuffer);
 
-        handle_inputs(bufferForRequests, client_socket);
+        parse_buffer(bufferForRequests, client_socket);
 
         if (n < 0)
         {
