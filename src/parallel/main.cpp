@@ -10,7 +10,7 @@
 #include <sstream>
 
 
-#define NUM_THREADS 100 
+#define NUM_THREADS 99
 
 
 void parse_buffer(std::queue<Request> bufferForRequests, int CLIENT_SOCKET)
